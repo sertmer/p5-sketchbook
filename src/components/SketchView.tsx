@@ -4,7 +4,7 @@ import p5 from 'p5';
 import React, { useRef, useEffect } from 'react';
 
 const SketchView = () => {
-  const sketchRef = useRef();
+  const sketchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sketch = (p) => {
@@ -24,10 +24,12 @@ const SketchView = () => {
       }
     }
 
-    let myP5 = new p5(sketch, sketchRef.current);
+    if (sketchRef.current) {
+      const myP5 = new p5(sketch, sketchRef.current);
 
-    return () => {
-      myP5.remove();
+      return () => {
+          myP5.remove();
+      };
     }
   }, []);
 
