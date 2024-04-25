@@ -1,8 +1,9 @@
+import SketchView from '@/components/SketchView';
 
 export default function Home() {
   return (
     <main>
-      <p>hello</p>
+      <SketchView />
     </main>
   );
 }
